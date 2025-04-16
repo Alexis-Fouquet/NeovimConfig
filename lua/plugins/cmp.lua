@@ -19,6 +19,17 @@ return {
                                 }
                             }
                         })
+                    elseif name == "lua_ls" then
+                        require('lspconfig').lua_ls.setup({
+                            capabilities = default,
+                            settings = {
+                                Lua = {
+                                    diagnostics = {
+                                        globals = { 'vim' }
+                                    }
+                                }
+                            }
+                        })
                     else
                         require('lspconfig')[name].setup({
                             capabilities = default

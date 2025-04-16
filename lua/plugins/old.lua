@@ -59,5 +59,18 @@ return {
         opts = {
         }
     },
-    { 'wakatime/vim-wakatime', lazy = false }
+    { 'wakatime/vim-wakatime', lazy = false },
+    {
+        'sphamba/smear-cursor.nvim',
+        opts = {}
+    },
+    {
+        'easymotion/vim-easymotion',
+        config = function ()
+            vim.keymap.set('n', '<leader>l', '<Plug>(easymotion-bd-f)', {
+                desc = "easymotion"
+            });
+            vim.keymap.set('n', '<leader>m', '<Plug>(easymotion-prefix)');
+        end
+    }
 }
