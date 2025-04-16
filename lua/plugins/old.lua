@@ -1,5 +1,10 @@
 return {
-    { 'vimwiki/vimwiki' },
+    {
+        'vimwiki/vimwiki',
+        config = function ()
+            vim.treesitter.language.register('markdown', 'vimwiki')
+        end
+    },
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -81,5 +86,41 @@ return {
                 desc = "easymotion"
             });
         end
+    },
+    {
+        '3rd/image.nvim',
+        event = "VeryLazy",
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter'
+        },
+        opts = {
+            backend = "kitty",
+            integrations = {
+                markdown = {
+                    enable = true,
+                    filetypes = { "markdown", "vimwiki" },
+                }
+            },
+            max_width = 500,
+            max_height = 500,
+            max_width_window_percentage = 90,
+            max_height_window_percentage = 50,
+            kitty_method = "normal",
+        }
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-tree/nvim-web-devicons'
+        },
+        config = function ()
+            require('render-markdown').setup({
+                file_types = { 'markdown', 'vimwiki' },
+            })
+        end,
+
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
     }
 }
