@@ -1,3 +1,5 @@
+-- Completion file
+
 return {
     {
         'williamboman/mason.nvim',
@@ -9,8 +11,8 @@ return {
             m_lsp.setup()
             m_lsp.setup_handlers {
                 function(name)
-                    local default = require("cmp_nvim_lsp").default_capabilities()
-                    if name == "cssls" then
+                    local default = require('cmp_nvim_lsp').default_capabilities()
+                    if name == 'cssls' then
                         require('lspconfig').cssls.setup({
                             capabilities = default,
                             settings = {
@@ -19,7 +21,7 @@ return {
                                 }
                             }
                         })
-                    elseif name == "lua_ls" then
+                    elseif name == 'lua_ls' then
                         require('lspconfig').lua_ls.setup({
                             capabilities = default,
                             settings = {
@@ -45,10 +47,10 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
-        -- version = "1.7.*",
-        version = "*",
+        -- version = '1.7.*',
+        version = '*',
         config = function()
-            local lspconfig = require("lspconfig")
+            local lspconfig = require('lspconfig')
             lspconfig.clangd.setup({})
         end
     },
@@ -61,8 +63,8 @@ return {
             { 'hrsh7th/cmp-path' },
             { 'hrsh7th/cmp-cmdline' },
             {
-                "L3MON4D3/LuaSnip",
-                version = "v2.*",
+                'L3MON4D3/LuaSnip',
+                version = 'v2.*',
                 dependencies = {
                     { 'saadparwaiz1/cmp_luasnip' }
                 }
@@ -70,8 +72,9 @@ return {
         },
         config = function()
             local cmp = require('cmp')
-            local luasnip = require("luasnip")
-            vim.notify("Configuring nvim cmp", "warning")
+            local luasnip = require('luasnip')
+            -- Debug only
+            -- vim.notify('Configuring nvim cmp', 'warning')
             cmp.setup {
                 mapping = cmp.mapping.preset.insert({
                     ['<C-Space>'] = cmp.mapping.complete(),
@@ -81,9 +84,10 @@ return {
                         else
                             fallback()
                         end
-                    end, {"i", "s", "c"}),
+                    end, {'i', 's', 'c'}),
                     ['<C-e>'] = cmp.mapping.abort(),
                     ['<Tab>'] = cmp.mapping(function(fallback)
+                        -- From the wiki
                         if cmp.visible() then
                             local entry = cmp.get_selected_entry()
                             if not entry then
@@ -95,7 +99,7 @@ return {
                         else
                             fallback()
                         end
-                    end, {"i","s","c",}),
+                    end, {'i','s','c',}),
                 }),
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
