@@ -1,4 +1,10 @@
 return {
+    { 'vimwiki/vimwiki' },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
     { 'tpope/vim-fugitive' },
     {
         'lewis6991/gitsigns.nvim',
@@ -9,8 +15,12 @@ return {
     {
         'NeogitOrg/neogit',
         dependencies = {
-            'nvim-lua/plenary.nvim'
-        }
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim'
+        },
+        config = true,
+        -- While I do not have neovim 0.10, I must git this
+        version = 'v0.0.1'
     },
     { 'nvim-treesitter/nvim-treesitter' },
     {
