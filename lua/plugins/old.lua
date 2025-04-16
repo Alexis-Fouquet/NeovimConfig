@@ -8,5 +8,9 @@ return {
             vim.cmd([[colorscheme tokyonight]])
         end,
     },
-    { 'preservim/nerdtree' }
+    { 'preservim/nerdtree' },
+    { 'junegunn/limelight.vim' },
+    { 'vim-airline/vim-airline' },
+    { 'which-key.nvim' },
+    { 'wakatime/vim-wakatime', lazy = false }
 }
