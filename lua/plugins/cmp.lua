@@ -9,7 +9,19 @@ return {
             m_lsp.setup()
             m_lsp.setup_handlers {
                 function(name)
-                    require('lspconfig')[name].setup({})
+                    if name == "cssls" then
+                        vim.notify(require("cmp_nvim_lsp").default_capabilities(),"info")
+                        require('lspconfig').cssls.setup({
+                            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                            settings = {
+                                css = {
+                                    validate = true
+                                }
+                            }
+                        })
+                    else
+                        require('lspconfig')[name].setup({})
+                    end
                 end
             }
         end,
