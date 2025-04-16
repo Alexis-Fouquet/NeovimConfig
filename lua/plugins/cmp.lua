@@ -45,6 +45,8 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
+        -- version = "1.7.*",
+        version = "*",
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.clangd.setup({})
@@ -73,6 +75,13 @@ return {
             cmp.setup {
                 mapping = cmp.mapping.preset.insert({
                     ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<S-Tab>'] = cmp.mapping(function (fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                        else
+                            fallback()
+                        end
+                    end, {"i", "s", "c"}),
                     ['<C-e>'] = cmp.mapping.abort(),
                     ['<Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then

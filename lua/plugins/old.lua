@@ -25,7 +25,8 @@ return {
         },
         config = true,
         -- While I do not have neovim 0.10, I must git this
-        version = 'v0.0.1'
+        -- version = 'v0.0.1'
+        version = "*",
     },
     {
         'nvim-treesitter/nvim-treesitter',
