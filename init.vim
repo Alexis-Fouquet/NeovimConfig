@@ -1,6 +1,8 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
+let g:EasyMotion_do_mapping = 0
+
 set nocompatible
 filetype off
 

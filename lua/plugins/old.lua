@@ -22,7 +22,16 @@ return {
         -- While I do not have neovim 0.10, I must git this
         version = 'v0.0.1'
     },
-    { 'nvim-treesitter/nvim-treesitter' },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        version = '*',
+        opts = {
+            highlight = { enable = true }
+        },
+        config = function (_, opts)
+            require('nvim-treesitter.configs').setup(opts)
+        end
+    },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -67,10 +76,10 @@ return {
     {
         'easymotion/vim-easymotion',
         config = function ()
-            vim.keymap.set('n', '<leader>l', '<Plug>(easymotion-bd-f)', {
+            vim.g.EasyMotion_do_mapping = 0;
+            vim.keymap.set('n', '<leader>d', '<Plug>(easymotion-bd-f)', {
                 desc = "easymotion"
             });
-            vim.keymap.set('n', '<leader>m', '<Plug>(easymotion-prefix)');
         end
     }
 }
