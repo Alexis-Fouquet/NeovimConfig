@@ -13,5 +13,8 @@ return {
             path = "~/Documents/github/backup-obs-epita",
         },
     },
+    ui = {
+        enable = false,
+    },
   },
 }

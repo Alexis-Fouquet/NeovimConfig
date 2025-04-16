@@ -97,7 +97,10 @@ return {
             backend = "kitty",
             integrations = {
                 markdown = {
-                    enable = true,
+                    enabled = true,
+                    clear_in_insert_mode = false,
+                    download_remote_images = false,
+                    only_render_image_at_cursor = false,
                     filetypes = { "markdown", "vimwiki" },
                 }
             },
@@ -122,5 +125,5 @@ return {
 
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
-    }
+    },
 }

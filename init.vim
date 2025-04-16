@@ -75,9 +75,12 @@ map <leader>y "+yy<CR>
 map <leader>p "+p<CR>
 " nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 
-set conceallevel=1
+set conceallevel=2
 
 lua << EOF
+
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
 
 vim.opt.termguicolors = true
 
