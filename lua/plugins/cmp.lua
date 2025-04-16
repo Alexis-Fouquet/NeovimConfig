@@ -31,6 +31,8 @@ return {
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-cmdline' },
             {
                 "L3MON4D3/LuaSnip",
                 version = "v2.*",
@@ -41,6 +43,7 @@ return {
         },
         config = function()
             local cmp = require('cmp')
+            local luasnip = require("luasnip")
             vim.notify("Configuring nvim cmp", "warning")
             cmp.setup {
                 mapping = cmp.mapping.preset.insert({
@@ -53,17 +56,19 @@ return {
                                 cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                             end
                             cmp.confirm()
+                        elseif luasnip.locally_jumpable(1) then
+                            luasnip.jump(1)
                         else
                             fallback()
                         end
                     end, {"i","s","c",}),
                 }),
-                sources = {
-                    cmp.config.sources({
-                        { name = "nvim_lsp" },
-                        { name = "buffer" },
-                    })
-                },
+                sources = cmp.config.sources({
+                    { name = 'nvim_lsp' },
+                    { name = 'buffer' },
+                    { name = 'path' },
+                    { name = 'luasnip' }
+                }),
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
@@ -74,6 +79,16 @@ return {
                     end
                 }
             }
+
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = 'path' }
+                }, {
+                    { name = 'cmdline' }
+                }),
+                matching = { disallow_symbol_nonprefix_matching = false }
+            })
         end
     }
 }
