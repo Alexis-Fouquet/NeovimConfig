@@ -31,7 +31,17 @@ return {
             vim.cmd([[colorscheme tokyonight]])
         end,
     },
-    { 'preservim/nerdtree' },
+    { 'stevearc/oil.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
+    {
+        'nvim-neo-tree/neo-tree.nvim',
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+    },
     { 'junegunn/limelight.vim' },
     {
         'nvim-lualine/lualine.nvim',
