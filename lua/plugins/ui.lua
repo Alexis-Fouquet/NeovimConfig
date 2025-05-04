@@ -30,11 +30,14 @@ return {
     {
         '3rd/image.nvim',
         event = 'VeryLazy',
+        commit = '6ffafab',
         dependencies = {
             'nvim-treesitter/nvim-treesitter'
         },
         opts = {
             backend = 'kitty',
+            kitty_method = 'normal',
+            -- processor = 'magick_rock',
             integrations = {
                 markdown = {
                     enabled = true,
@@ -48,7 +51,6 @@ return {
             max_height = 500,
             max_width_window_percentage = 90,
             max_height_window_percentage = 50,
-            kitty_method = 'normal',
         }
     },
     {
