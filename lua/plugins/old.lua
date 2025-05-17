@@ -5,7 +5,7 @@ return {
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
-        config = true
+        config = true,
     },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -29,6 +29,7 @@ return {
     },
     {
         'easymotion/vim-easymotion',
+        event = 'VeryLazy',
         config = function ()
             vim.g.EasyMotion_do_mapping = 0;
             vim.keymap.set('n', '<leader>d', '<Plug>(easymotion-bd-f)', {

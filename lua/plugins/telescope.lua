@@ -1,14 +1,20 @@
 return {
     {
         'nvim-telescope/telescope-file-browser.nvim',
-        dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+            'nvim-lua/plenary.nvim'
+        },
+        event = 'VeryLazy',
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
+        event = 'VeryLazy',
         build = 'make'
     },
     {
         'nvim-telescope/telescope.nvim',
+        event = 'VeryLazy',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-fzf-native.nvim'

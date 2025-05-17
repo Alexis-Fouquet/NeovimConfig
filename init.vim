@@ -25,6 +25,7 @@ set tabstop=4
 " RULERS
 
 set colorcolumn=80
+set signcolumn=yes
 set cursorline
 set ruler
 set relativenumber
@@ -65,6 +66,7 @@ map <leader>f :Files<CR>
 map <leader><leader> :Files<CR>
 map <leader>y "+yy<CR>
 map <leader>p "+p<CR>
+autocmd FileType markdown nmap <buffer><silent> <leader>P :call mdip#MarkdownClipboardImage()<CR>
 
 lua << EOF
 

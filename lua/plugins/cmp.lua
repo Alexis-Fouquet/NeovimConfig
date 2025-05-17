@@ -2,43 +2,44 @@
 
 return {
     {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         -- cmd = 'Mason',
-        lazy = false,
+        event = 'VeryLazy',
         config = function()
             require('mason').setup()
             local m_lsp = require('mason-lspconfig')
             m_lsp.setup()
-            m_lsp.setup_handlers {
-                function(name)
-                    local default = require('cmp_nvim_lsp').default_capabilities()
-                    if name == 'cssls' then
-                        require('lspconfig').cssls.setup({
-                            capabilities = default,
-                            settings = {
-                                css = {
-                                    validate = true
-                                }
-                            }
-                        })
-                    elseif name == 'lua_ls' then
-                        require('lspconfig').lua_ls.setup({
-                            capabilities = default,
-                            settings = {
-                                Lua = {
-                                    diagnostics = {
-                                        globals = { 'vim' }
-                                    }
-                                }
-                            }
-                        })
-                    else
-                        require('lspconfig')[name].setup({
-                            capabilities = default
-                        })
-                    end
-                end
-            }
+            -- TODO replace this
+            -- m_lsp.setup_handlers {
+            --     function(name)
+            --         local default = require('cmp_nvim_lsp').default_capabilities()
+            --         if name == 'cssls' then
+            --             require('lspconfig').cssls.setup({
+            --                 capabilities = default,
+            --                 settings = {
+            --                     css = {
+            --                         validate = true
+            --                     }
+            --                 }
+            --             })
+            --         elseif name == 'lua_ls' then
+            --             require('lspconfig').lua_ls.setup({
+            --                 capabilities = default,
+            --                 settings = {
+            --                     Lua = {
+            --                         diagnostics = {
+            --                             globals = { 'vim' }
+            --                         }
+            --                     }
+            --                 }
+            --             })
+            --         else
+            --             require('lspconfig')[name].setup({
+            --                 capabilities = default
+            --             })
+            --         end
+            --     end
+            -- }
         end,
         dependencies = {
             'neovim/nvim-lspconfig',

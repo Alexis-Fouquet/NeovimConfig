@@ -13,6 +13,7 @@ return {
     {
         -- Should be disabled on slow computers
         'sphamba/smear-cursor.nvim',
+        event = 'VeryLazy',
         opts = {}
     },
     {
@@ -55,6 +56,7 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim',
+        event = 'BufRead',
         config = function()
             require('lualine').setup {
                 options = {
