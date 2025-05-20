@@ -31,14 +31,18 @@ return {
     {
         '3rd/image.nvim',
         event = 'VeryLazy',
+        -- Some bugs were in the last commit
+        -- Check again later
         commit = '6ffafab',
         dependencies = {
             'nvim-treesitter/nvim-treesitter'
         },
+
         opts = {
             backend = 'kitty',
             kitty_method = 'normal',
-            -- processor = 'magick_rock',
+            processor = 'magick_rock',
+
             integrations = {
                 markdown = {
                     enabled = true,
@@ -57,6 +61,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         event = 'BufRead',
+        -- version = "*",
         config = function()
             require('lualine').setup {
                 options = {

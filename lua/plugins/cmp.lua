@@ -5,6 +5,7 @@ return {
         'mason-org/mason.nvim',
         -- cmd = 'Mason',
         event = 'VeryLazy',
+        version = "*",
         config = function()
             require('mason').setup()
             local m_lsp = require('mason-lspconfig')
