@@ -28,7 +28,7 @@ return {
     },
     {
         'jbyuki/nabla.nvim',
-        enable = false,
+        enabled = false,
         lazy = true,
         dependencies = {
             'nvim-neo-tree/neo-tree.nvim',

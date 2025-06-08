@@ -2,22 +2,22 @@ vim.lsp.enable("clangd")
 
 return {
     {
+        'mason-org/mason-lspconfig.nvim',
+        version = "*",
+        opts = {},
+        dependencies = {
+            'mason-org/mason.nvim',
+            {
+                'neovim/nvim-lspconfig',
+                version = '*',
+            },
+        },
+    },
+    {
         'mason-org/mason.nvim',
         event = 'VeryLazy',
         version = "*",
         opts = {},
-        dependencies = {
-            {
-                'mason-org/mason-lspconfig.nvim',
-                opts = {},
-            }
-        }
-    },
-    {
-        'neovim/nvim-lspconfig',
-        version = '*',
-        -- not needed in 0.11? testing
-        enable = false,
     },
     {
         'hrsh7th/nvim-cmp',

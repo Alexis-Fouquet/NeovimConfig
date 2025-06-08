@@ -10,7 +10,7 @@ return {
         end
     },
     {
-        enable = false,
+        enabled = false,
         'NeogitOrg/neogit',
         event = 'VeryLazy',
         dependencies = {

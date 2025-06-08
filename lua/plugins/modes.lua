@@ -3,7 +3,7 @@
 return {
     {
         'jbyuki/venn.nvim',
-        enable = false,
+        enabled = false,
         event = 'VeryLazy',
     }
 }
