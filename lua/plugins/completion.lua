@@ -1,5 +1,3 @@
--- Completion file
-
 return {
     {
         'mason-org/mason.nvim',
@@ -49,7 +47,6 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
-        -- version = '1.7.*',
         version = '*',
         config = function()
             local lspconfig = require('lspconfig')

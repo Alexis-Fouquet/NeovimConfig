@@ -1,5 +1,7 @@
 return {
-    { 'nvim-tree/nvim-web-devicons' },
+    {
+        'nvim-tree/nvim-web-devicons'
+    },
     {
         'rcarriga/nvim-notify',
         lazy = false,

@@ -10,6 +10,7 @@ return {
         end
     },
     {
+        enable = false,
         'NeogitOrg/neogit',
         event = 'VeryLazy',
         dependencies = {
@@ -17,8 +18,6 @@ return {
             'nvim-telescope/telescope.nvim'
         },
         config = true,
-        -- While I do not have neovim 0.10, I must git this
-        -- version = 'v0.0.1'
         version = '*',
     },
 }

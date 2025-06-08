@@ -1,7 +1,10 @@
 return {
-    { 'stevearc/oil.nvim' },
-    { 'junegunn/limelight.vim' },
-    { 'wakatime/vim-wakatime', lazy = false },
+    {
+        'stevearc/oil.nvim',
+        config = function ()
+            require("oil").setup()
+        end,
+    },
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',

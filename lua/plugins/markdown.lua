@@ -26,14 +26,15 @@ return {
             vim.treesitter.language.register('markdown', 'vimwiki')
         end,
     },
-    -- {
-    --     'jbyuki/nabla.nvim',
-    --     lazy = true,
-    --     dependencies = {
-    --         'nvim-neo-tree/neo-tree.nvim',
-    --         'williamboman/mason.nvim',
-    --     },
-    -- },
+    {
+        'jbyuki/nabla.nvim',
+        enable = false,
+        lazy = true,
+        dependencies = {
+            'nvim-neo-tree/neo-tree.nvim',
+            'williamboman/mason.nvim',
+        },
+    },
     {
         'MeanderingProgrammer/render-markdown.nvim',
         event = 'VeryLazy',
@@ -62,6 +63,7 @@ return {
     },
     {
         'img-paste-devs/img-paste.vim',
+        enable = false,
         event = 'VeryLazy',
     },
 }
