@@ -1,4 +1,5 @@
 vim.lsp.enable("clangd")
+vim.diagnostic.config({ virtual_text = true })
 
 return {
     {
@@ -27,6 +28,8 @@ return {
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
             { 'hrsh7th/cmp-cmdline' },
+            { 'hrsh7th/cmp-calc' },
+            { 'onsails/lspkind.nvim' },
         },
         config = function()
             local cmp = require('cmp')
@@ -35,7 +38,9 @@ return {
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<S-Tab>'] = cmp.mapping(function (fallback)
                         if cmp.visible() then
-                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                            cmp.select_next_item({
+                                behavior = cmp.SelectBehavior.Select
+                            })
                         else
                             fallback()
                         end
@@ -46,7 +51,9 @@ return {
                         if cmp.visible() then
                             local entry = cmp.get_selected_entry()
                             if not entry then
-                                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                                cmp.select_next_item({
+                                    behavior = cmp.SelectBehavior.Select
+                                })
                             end
                             cmp.confirm()
                         else
@@ -67,7 +74,27 @@ return {
                     expand = function(args)
                         vim.snippet.expand(args.body)
                     end
-                }
+                },
+                formatting = {
+                    fields = { "kind", "abbr", "menu" },
+                    -- From the wiki
+                    format = function(entry, vim_item)
+                        local kind = require("lspkind")
+                            .cmp_format({
+                                mode = "symbol_text",
+                                maxwidth = 60,
+                            })(entry, vim_item)
+                        local strings = vim.split(
+                            kind.kind,
+                            "%s",
+                            { trimempty = true }
+                        )
+                        kind.kind = " " .. (strings[1] or "") .. " "
+                        kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+                        return kind
+                    end,
+                },
             }
 
             cmp.setup.cmdline(':', {
